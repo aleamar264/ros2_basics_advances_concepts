@@ -20,6 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            "move_robot_server= challenge_actions.robot_server:main",
+            "move_robot_client= challenge_actions.robot_cliente:main"
         ],
     },
 )
