@@ -6,10 +6,10 @@
 using LifecycleCallbackReturn =
     rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn;
 
-class NumberPublisherNode : public rclcpp_lifecycle::LifecycleNode
+class NumberPublisher : public rclcpp_lifecycle::LifecycleNode
 {
 public:
-    NumberPublisherNode() : LifecycleNode("number_publisher")
+    NumberPublisher() : LifecycleNode("number_publisher")
     {
         RCLCPP_INFO(this->get_logger() , "IN constructor");
         number_ = 1;
@@ -24,7 +24,7 @@ LifecycleCallbackReturn on_configure(const rclcpp_lifecycle::State &previous_sta
             this->create_publisher<example_interfaces::msg::Int64>("number", 10);
     number_timer_ =
         this->create_wall_timer(std::chrono::milliseconds((int)(1000.0/publish_frequency_)),
-                                std::bind(&NumberPublisherNode::publishNumber, this));
+                                std::bind(&NumberPublisher::publishNumber, this));
     number_timer_->cancel();
     return LifecycleCallbackReturn::SUCCESS;
     };
@@ -86,7 +86,7 @@ private:
 int main(int argc, char **argv){
 
     rclcpp::init(argc, argv);
-    auto node = std::make_shared<NumberPublisherNode>();
+    auto node = std::make_shared<NumberPublisher>();
     rclcpp::spin(node->get_node_base_interface());
     rclcpp::shutdown();
     return 0;

@@ -1,0 +1,7 @@
+float64 linear_vel_x
+float64 angular_vel_z
+int64 duration_sec
+---
+bool success
+string message
+---

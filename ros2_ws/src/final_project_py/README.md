@@ -1,0 +1,6 @@
+- Start Turtlesim, spwan/kill a turtle.
+- Action server (MoveTurtle), goal: linear_vel_x, angular_vel_z, duration.
+  - Transform into a LifeCycleNode Node. Activate/Deactivate action server.
+- Transform into a Component.
+- Launch file.
+- Adapt to Gazebo.

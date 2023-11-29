@@ -1,11 +1,11 @@
-from setuptools import setup
+from setuptools import find_packages, setup
 
-package_name = 'lifecycle_py'
+package_name = 'executors_py'
 
 setup(
     name=package_name,
     version='0.0.0',
-    packages=[package_name],
+    packages=find_packages(exclude=['test']),
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
@@ -20,11 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "number_publisher=lifecycle_py.number_publisher:main",
-            "number_publisher_lifecylce=lifecycle_py.number_publisher_lifecycle:main",
-            "lifecycle_manager_node = lifecycle_py.lifecycle_manager_node:main",
-            "move_robot_server=lifecycle_py.robot_server:main",
-            "move_robot_startup=lifecycle_py.move_robot_startup:main"
+            "single_thread=executors_py.single_threaded_executor:main",
+            "multithread_thread=executors_py.multi_thread_executor:main"
         ],
     },
 )
